@@ -5,22 +5,23 @@ import {useState} from 'react';
 import AddTask from './components/AddTask';
 
 function App() {
+  const [showAddTask, setShowAddTask] = useState(false)
   const [tasks,setTasks] = useState([
     {
      id : 1,
-     text : 'Book Reading',
+     task : 'Book Reading',
      day : 'April 1st 2022',
      remainder : true
     },
     {
       id : 2,
-      text : 'Meeting friend',
+      task : 'Meeting friend',
       day : 'April 2nd 2022',
       remainder : true
      },
      {
       id : 3,
-      text : 'Dental Checkup',
+      task : 'Dental Checkup',
       day : 'April 3rd 2022',
       remainder : true
      },
@@ -36,13 +37,15 @@ function App() {
   }
 
   const addTask = (task)=>{
-    console.log(task)
+    const id = Math.floor(Math.random()*10000);
+    const newTask = {id,...task};
+    setTasks([...tasks,newTask])
   }
 
   return (
     <div className="container">
-      <Header title="Task Tracker"></Header>
-      <AddTask onAdd={addTask}/>
+      <Header showAdd = {showAddTask} onAdd={()=>{setShowAddTask(!showAddTask)}} title="Task Tracker"></Header>
+      {showAddTask && <AddTask onAdd={addTask}/>}
       {tasks.length>0 ? <Tasks onToggle = {toggleRemainder} tasks={tasks} onDelete={deleteTask}/> : "No Tasks to show"}
     </div>
   );

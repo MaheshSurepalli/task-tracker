@@ -21,11 +21,11 @@ const onSubmit = (e) => {
     <form className="add-form" onSubmit={onSubmit}>
         <div className="form-control">
             <label>Task</label>
-            <input type="text" value={day} onChange={(e)=>setDay(e.target.value)} placeholder="Enter the task" />
+            <input type="text" value={task} onChange={(e)=>setTask(e.target.value)} placeholder="Enter the task" />
         </div>
         <div className="form-control">
             <label>Day</label>
-            <input type="text" value={task} onChange={(e)=>setTask(e.target.value)} placeholder="Enter the day"/>
+            <input type="text" value={day} onChange={(e)=>setDay(e.target.value)} placeholder="Enter the day"/>
         </div>
         <div className="form-control form-control-check">
             <label>Set Remainder</label>
